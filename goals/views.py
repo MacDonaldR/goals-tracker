@@ -29,12 +29,48 @@ class GoalDelete(DeleteView):
     model = Goal
     success_url = reverse_lazy('goal-list')
 
+# Resource Views
+class ResourceList(ListView):
+    model = Resource
+
+class ResourceDetailView(DetailView):
+    model = Resource
+
+class ResourceUpdate(UpdateView):
+    model = Resource
+    fields = ['name','location','description','priority','level']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('resource-list')
+
+class ResourceCreate(CreateView):
+    model = Resource
+    fields = ['name','location','description','priority','level']
+    success_url = reverse_lazy('resource-list')
+
+class ResourceDelete(DeleteView):
+    model = Resource
+
 # Session Views
 class SessionList(ListView):
     model = Session
 
 class SessionDetailView(DetailView):
     model = Session
+
+class SessionCreate(CreateView):
+    model = Session
+    fields = ['date', 'duration','description','resource','goal']
+    success_url = reverse_lazy('session-list')
+
+class SessionUpdate(UpdateView):
+    model = Session
+    fields = ['date', 'duration','description','resource','goal']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('session-list')
+
+class SessionDelete(DeleteView):
+    model = Session
+    success_url = reverse_lazy('session-list')
 
 # Milestone Views
 class MilestoneList(ListView):
@@ -43,9 +79,17 @@ class MilestoneList(ListView):
 class MilestoneDetailView(DetailView):
     model = Milestone
 
-# Resource Views
-class ResourceList(ListView):
-    model = Resource
+class MilestoneCreate(CreateView):
+    model = Milestone
+    fields = ['name','goal','planned_completion_date','actual_completion_date','reward','proof']
+    success_url = reverse_lazy('milestone-list')
 
-class ResourceDetailView(DetailView):
-    model = Resource
+class MilestoneUpdate(UpdateView):
+    model = Milestone
+    template_name_suffix = '_update_form'
+    fields = ['name','goal','planned_completion_date','actual_completion_date','reward','proof']
+    success_url = reverse_lazy('milestone-list')
+
+class MilestoneDelete(DeleteView):
+    model = Milestone
+    success_url = reverse_lazy('milestone-list')
