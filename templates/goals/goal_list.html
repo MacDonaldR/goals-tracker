@@ -2,9 +2,32 @@
 
 {% block content %}
     <h2>Goal</h2>
-    <ul>
+    <table>
+    <thead>
+        <th>Goal Name</th>
+        <th>Committed Date</th>
+        <th>Committed Effort</th>
+        <th>Planned Completion Date</th>
+        <th>Actual Completion Date</th>
+        <th>Motivation</th>
+        <th colspan=2>Actions</th>
+    </thead>
+    <tbody>    
         {% for goal in object_list %}
-            <li>{{ goal.name }}</li>
+        <tr>
+            <td>{{ goal.name }}</td>
+            <td>{{ goal.commitment_date }}</td>
+            <td>{{ goal.committed_effort }} </td>
+            <td>{{ goal.planned_completion_date }}</td>
+            <td>{{ goal.actual_completion_date }}</td>
+            <td>{{ goal.motivation }}</td>
+            <td><a href="{% url 'goal-update' pk=goal.id %}">Edit</a></td>
+            <td><a href="{% url 'goal-delete' pk=goal.id %}">Delete</a></td>
+        </tr>
         {% endfor %}
-    </ul>
+        
+    </tbody>
+    </table>
+
+    <a href="{% url 'goal-create' %}">Add new goal</a>
 {% endblock %}

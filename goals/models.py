@@ -13,7 +13,7 @@ class Goal(models.Model):
     commitment_date = models.DateField(auto_now_add=True)
     committed_effort = models.CharField(max_length=100)
     planned_completion_date = models.DateField()
-    actual_completion_date = models.DateField()
+    actual_completion_date = models.DateField(blank=True,null=True)
     motivation = models.TextField()
 
     def __str__(self):
@@ -49,8 +49,8 @@ class Milestone(models.Model):
     name = models.CharField(max_length=50)
     goal = models.ForeignKey('Goal',
         on_delete=models.CASCADE)
-    planned_completion_date = models.DateField()
-    actual_completion_date = models.DateField()
+    planned_completion_date = models.DateField(blank=True, null=True)
+    actual_completion_date = models.DateField(blank=True, null=True)
     reward = models.TextField()
     proof = models.TextField()
 
