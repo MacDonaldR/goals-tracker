@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Milestones</h2>
+    <table>
+    <thead>
+        <th>Milestone Name</th>
+        <th>Goal</th>
+        <th>Planned Completion Date</th>
+        <th>Actual Completion Date</th>
+        <th>Motivation</th>
+        <th>Proof</th>
+        <th colspan=2>Actions</th>
+    </thead>
+    <tbody>    
+        {% for milestone in object_list %}
+        <tr>
+            <td>{{ milestone.name }}</td>
+            <td>{{ milestone.goal }}</td>
+            <td>{{ milestone.planned_completion_date }} </td>
+            <td>{{ milestone.actual_completion_date }}</td>
+            <td>{{ milestone.reward }}</td>
+            <td>{{ milestone.proof }}</td>
+            <td><a href="{% url 'milestone-update' pk=milestone.id %}">Edit</a></td>
+            <td><a href="{% url 'milestone-delete' pk=milestone.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+
+    <a href="{% url 'milestone-create' %}">Add new milestone</a>
+{% endblock %}

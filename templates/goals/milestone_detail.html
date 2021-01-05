@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ object.name}}</h1>
+    <p>{{ object.goal }}</p>
+    <p>{{ object.planned_completion_date }}</p>
+    <p>{{ object.actual_completion_date }}</p>
+    <p>{{ object.reward }}</p>
+    <p>{{ object.proof }}</p>
+{% endblock %}
