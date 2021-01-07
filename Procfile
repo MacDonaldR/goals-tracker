@@ -1,1 +1,1 @@
-web: gunicorn goals.wsgi
+web: gunicorn goals_tracker.wsgi
