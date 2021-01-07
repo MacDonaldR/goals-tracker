@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+    <h1 class="list-group">{{ object.date}}</h1>
+    <ul>
+        <li class="list-group-item"><strong>Goal: </strong>{{ object.goal }}</li>
+        <li class="list-group-item"><strong>Duration: </strong>{{ object.duration }}</li>
+        <li class="list-group-item"><strong>Resource: </strong>{{ object.resource }}</li>
+    </ul>
+{% endblock %}

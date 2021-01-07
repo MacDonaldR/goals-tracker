@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Sessions</h2>
+    <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <th>Session Date</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>Resource</th>
+        <th>Goal</th>
+        <th colspan=2>Actions</th>
+    </thead>
+    <tbody>    
+        {% for session in object_list %}
+        <tr>
+            <td>{{ session.date }}</td>
+            <td>{{ session.duration }}</td>
+            <td>{{ session.description }} </td>
+            <td>{{ session.resource }}</td>
+            <td>{{ session.goal }}</td>
+            <td><a href="{% url 'session-update' pk=session.id %}">Edit</a></td>
+            <td><a href="{% url 'session-delete' pk=session.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+
+    <a href="{% url 'session-create' %}">Add new session</a>
+{% endblock %}

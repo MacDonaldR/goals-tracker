@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from goals.views import GoalList, GoalDetailView, GoalCreate, GoalUpdate, GoalDelete
 from goals.views import ResourceList, ResourceDetailView, ResourceCreate, ResourceUpdate, ResourceDelete
 from goals.views import SessionList, SessionDetailView, SessionCreate, SessionUpdate, SessionDelete
 from goals.views import MilestoneList, MilestoneDetailView, MilestoneCreate, MilestoneUpdate, MilestoneDelete
 
 urlpatterns = [
+    # Login
+    path('accounts/', include('django.contrib.auth.urls')),
     # Goal CRUD
     path('goals/', GoalList.as_view(), name='goal-list'),
     path('goals/new/', GoalCreate.as_view(), name='goal-create'),

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Resources</h2>
+    <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <th>Resource Name</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Level</th>
+        <th colspan=2>Actions</th>
+    </thead>
+    <tbody>    
+        {% for resource in object_list %}
+        <tr>
+            <td>{{ resource.name }}</td>
+            <td>{{ resource.location }}</td>
+            <td>{{ resource.description }} </td>
+            <td>{{ resource.priority }}</td>
+            <td>{{ resource.level }}</td>
+            <td><a href="{% url 'resource-update' pk=resource.id %}">Edit</a></td>
+            <td><a href="{% url 'resource-delete' pk=resource.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+
+    <a href="{% url 'resource-create' %}">Add new resource</a>
+{% endblock %}

@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 {% block content %}
-    <h1>{{ object.name}}</h1>
-    <p>{{ object.commitment_date }}</p>
-    <p>{{ object.committed_effort }}</p>
-    <p>{{ object.planned_completion_date }}</p>
-    <p>{{ object.actual_completion_date }}</p>
-    <p>{{ object.motivation }}</p>
+    <h1 class="list-group">{{ object.name}}</h1>
+    <ul>
+        <li class="list-group-item"><strong>Commitment Date: </strong>{{ object.commitment_date }}</li>
+        <li class="list-group-item"><strong>Committed Effort: </strong>{{ object.committed_effort }}</li>
+        <li class="list-group-item"><strong>Planned Completion: </strong>{{ object.planned_completion_date }}</li>
+        <li class="list-group-item"><strong>Actual Completion: </strong>{{ object.actual_completion_date }}</li>
+        <li class="list-group-item"><strong>Motivation: </strong>{{ object.motivation }}</li>
+    </ul>
 {% endblock %}

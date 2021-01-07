@@ -1,2 +1,19 @@
-{% block content %}
-{% endblock %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!-- As a heading -->
+<nav class="navbar navbar-dark bg-primary">
+    <span class="navbar-brand mb-0 h1">Goal Tracker</span>
+</nav>
+
+<br/>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid bg-dark">
+        <h1 class="display-4 text-light">Track your goals here</h1>
+    </div>
+
+    <p class="lead">To get started, add a goal below:</p>
+    {% block content %}
+    {% endblock %}
+</div>

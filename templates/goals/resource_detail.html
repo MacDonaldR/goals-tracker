@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+    <h1 class="list-group">{{ object.name}}</h1>
+    <ul>
+        <li class="list-group-item"><strong>Location: </strong>{{ object.location }}</li>
+        <li class="list-group-item"><strong>Priority: </strong>{{ object.priority }}</li>
+        <li class="list-group-item"><strong>Level: </strong>{{ object.level }}</li>
+        <li class="list-group-item"><strong>Description: </strong>{{ object.description }}</li>
+    </ul>
+{% endblock %}
