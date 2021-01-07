@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -9,6 +10,7 @@ from django.db import models
 
 
 class Goal(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     commitment_date = models.DateField(auto_now_add=True)
     committed_effort = models.CharField(max_length=100)
@@ -20,6 +22,7 @@ class Goal(models.Model):
         return self.name
 
 class Resource(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=250)
     description = models.TextField()
@@ -33,6 +36,7 @@ class Resource(models.Model):
 
 
 class Session(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     duration = models.IntegerField()
     description = models.TextField()
@@ -46,6 +50,7 @@ class Session(models.Model):
         return self.description
 
 class Milestone(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     goal = models.ForeignKey('Goal',
         on_delete=models.CASCADE)
